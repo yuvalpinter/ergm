@@ -136,7 +136,7 @@ def geo_in(G):
 
     return geo_in_dist
 
-def transitive_triads(G):
+def transitive_triads_explicit(G):
     sum = 0.
     n_nodes = G.shape[0]
     for i in xrange(n_nodes):
@@ -178,3 +178,9 @@ def alternating_k_paths(G):
                     two_paths += G[i,k] * G[k,j]
             sum += 2 * (1 - (0.5 ** two_paths))
     return sum
+
+### Added to original impl
+
+def self_loops(G):
+    n_nodes = G.shape[0]
+    return sum([G[i,i] for i in xrange(n_nodes)])
